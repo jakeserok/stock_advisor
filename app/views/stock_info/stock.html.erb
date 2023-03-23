@@ -1,0 +1,53 @@
+<div class="container bg-light rounded">
+  <h2><%= @info.description %></h2>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3>Trends This Month</h3>
+        <p>BUYS: <%= @trends ? @trends.first.buy : 'No data currently' %></p>
+        <p>STRONG BUYS: <%= @trends ? @trends.first.strong_buy : 'No data currently'  %></p>
+        <p>SELLS: <%= @trends ? @trends.first.sell : 'No data currently'  %></p>
+        <p>STRONG BUYS: <%= @trends ? @trends.first.strong_sell : 'No data currently'  %></p>
+      </div>
+      <div class="col">
+        <h3>Recent Social Sentiment</h3>
+        <p class="text-center">Sentiment scores range from -1 to 1. 1 being a positive sentiment and -1 being negative sentiment.</p>
+        <p>REDDIT SENTIMENT SCORE: <%= @reddit_score %></p>
+        <p>TWITTER SENTIMENT SCORE: <%= @twitter_score %></p>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Price Data</h3>
+      <div class="col">
+        <div class="container">
+          <p>
+            Yesterday's Open <%= "#{Time.at(@daily_price_diff.t.first).strftime('%m/%d/%y')}: $#{@daily_price_diff.o.first}" %><br>
+            Today's Open <%= "#{Time.at(@daily_price_diff.t.last).strftime('%m/%d/%y')}: $#{@daily_price_diff.o.last}"  %>
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="container">
+          <p>
+            Last Week's Open <%= "#{Time.at(@weekly_price_diff.t.first).strftime('%m/%d/%y')}: $#{@weekly_price_diff.o.first}" %><br>
+            This Week's Open <%= "#{Time.at(@weekly_price_diff.t.last).strftime('%m/%d/%y')}: $#{@weekly_price_diff.o.last}" %>
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="container">
+          <p>
+            Last Month's Open <%= "#{Time.at(@monthly_price_diff.t.first).strftime('%m/%d/%y')}: $#{@monthly_price_diff.o.first}" %><br>
+            This Month's Open <%= "#{Time.at(@monthly_price_diff.t.last).strftime('%m/%d/%y')}: $#{@monthly_price_diff.o.last}" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3>AI Recommendation:</h3>
+    <p>
+      <%= @message %>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="bg-light rounded pt-5">
+  <h1 class="text-center">Recent News</h1>
+  <div class="row ms-5">
+    <% @news.each do |article| %>
+      <div class="col-sm-4 p-2">
+        <div class="card" style="width: 18rem;">
+          <img src="<%= article.image %>" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><%= article.headline %></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <%= link_to("See article",  article.url, class: "btn btn-primary") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

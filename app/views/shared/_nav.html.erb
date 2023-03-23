@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <%= link_to "StockApp", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Stocks", stocks_path, class: "nav-link"%>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if current_user %>
+        <li class="nav-item btn-l-padding m-2">
+          <%= link_to current_user.email, root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item btn-l-padding m-2">
+          <%= button_to "Logout", destroy_user_session_path, method: :delete , class: "btn btn-secondary" %>
+        </li>
+        <% else %>
+        <li class="nav-item btn-l-padding m-2">
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-secondary" %>
+        </li>
+        <li class="nav-item btn-l-padding m-2">
+          <%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
