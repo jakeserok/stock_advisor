@@ -5,7 +5,6 @@ ruby "3.2.1"
 
 gem "rails", "~> 7.0.4"
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.4"
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -38,3 +37,7 @@ gem "ruby-openai", "~> 3.5"
 gem "sidekiq", "~> 7.0"
 
 gem "whenever", "~> 1.0"
+
+gem "postgresql", "~> 1.0"
+
+gem "pg", "~> 1.4"
