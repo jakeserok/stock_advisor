@@ -11,21 +11,6 @@
   </div>
 </div>
 
-<br>
-
-<div class="bg-light rounded-pill">
-  <div class="container">
-    <div class="row text-center">
-      <%= form_with url: stock_path, method: :get do |f| %>
-        <h4><%= f.label :Stock, class: 'col m-2' %></h4>
-        <p>Below is a symbol searcher, be advised that it will only return valid data if it is provided a valid symbol.</p>
-        <%= f.text_field :symbol %>
-        <%= f.submit 'Get info', class: 'btn btn-primary m-2' %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
 <%# <%= form_tag('/stock', method: 'GET') do |form| %>
 <%#   <%= select_tag('symbol', options_for_select(@symbols)) %>
 <%#   <%= submit_tag 'Get your stock info' %>
