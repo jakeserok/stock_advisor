@@ -1,7 +1,9 @@
 namespace :batch do
   desc "Get Ai opinion on various stocks"
   task ai_opinion_generator: :environment do
-    GetAiOpinionJob.perform_now
+    YAML.load_file('config/stocks.yml')['symbols'].each_with_index do |s, i|
+      GetAiOpinionJob.perform_in((i * 20).seconds, s)
+    end
     puts "AI Opinions generated at #{DateTime.now}"
   end
 

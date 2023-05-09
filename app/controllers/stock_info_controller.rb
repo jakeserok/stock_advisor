@@ -11,6 +11,8 @@ class StockInfoController < ApplicationController
   def stock
     stock = params['symbol']
     @info = finnhub.symbol_search(stock).result.select { |record| record.symbol == stock }.first
+    redirect_to(stocks_path, notice: 'Please enter a valid symbol.') if @info.nil?
+
     @advisor = FinanceAiAdvisor.new(stock)
     @trends = @advisor.trends
     @reddit_score = @advisor.reddit_score
@@ -38,20 +40,9 @@ class StockInfoController < ApplicationController
   def stock_symbols
     @stocks = YAML.load_file('config/stocks.yml')['symbols']
   end
-  
-  def current_time
-    DateTime.now.to_time.to_i
-  end
 
-  def previous_day_time
-    (DateTime.now - 1.days).to_time.to_i
-  end
-
-  def previous_week_time
-    (DateTime.now - 7.days).to_time.to_i
-  end
-
-  def previous_month_time
-    (DateTime.now - 1.months).to_time.to_i
+  def redirect_from_bad_request
+    flash[:notice] = 'Please enter a valid symbol'
+    redirect_to root_path 
   end
 end
