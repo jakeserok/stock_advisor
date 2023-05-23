@@ -41,3 +41,7 @@ gem "whenever", "~> 1.0"
 gem "postgresql", "~> 1.0"
 
 gem "pg", "~> 1.4"
+
+gem "dotenv-rails", "~> 2.8"
+
+gem "connection_pool", "~> 2.3"

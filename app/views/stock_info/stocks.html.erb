@@ -3,6 +3,7 @@
     <div class="row text-center">
       <%= form_with url: stock_path, method: :get do |f| %>
         <h4><%= f.label :Stock, class: 'col m-2' %></h4>
+        <p>Below is a set list of stocks available to view.</p>
         <%= f.select('symbol', options_for_select(@symbols)) %>
         <%= f.submit 'Get info', class: 'btn btn-primary m-2' %>
       <% end %>
